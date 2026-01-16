@@ -11,15 +11,25 @@ export default class ProductDetails {
         this.dataSource = dataSource
     }
 
+    async init() {
+        const productId = await this.dataSource.findProductById(this.productId)
+        this.renderProductDetails(productId)
+        
+        document.addEventListener("click", e => {
+            if (e.target.classList.contains("addToCart")){
+                this.addProductToCart(productId)
+            }
+        })
+       
+    }
+
     addProductToCart(product) {
         let cartItems = getLocalStorage("so-cart") || [];
         cartItems.push(product);
         setLocalStorage("so-cart", cartItems);
     }
 
-    async renderProductDetails(productId) {
-        const product = await productId
-
+    renderProductDetails(product) {
         const clone = template.content.cloneNode(true)
         const [brand, nameP, img, price, color, descri, btn] = clone.querySelectorAll("h3, h2, img, p, p, p, button")
 
