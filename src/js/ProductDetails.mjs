@@ -12,20 +12,20 @@ export default class ProductDetails {
     }
 
     async init() {
-        const productId = await this.dataSource.findProductById(this.productId)
-        this.renderProductDetails(productId)
+        this.product = await this.dataSource.findProductById(this.productId)
+        this.renderProductDetails(this.product)
         
         document.addEventListener("click", e => {
             if (e.target.classList.contains("addToCart")){
-                this.addProductToCart(productId)
+                this.addProductToCart(this)
             }
         })
        
     }
 
-    addProductToCart(product) {
+    addProductToCart() {
         let cartItems = getLocalStorage("so-cart") || [];
-        cartItems.push(product);
+        cartItems.push(this.product);
         setLocalStorage("so-cart", cartItems);
     }
 
