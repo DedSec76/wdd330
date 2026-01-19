@@ -242,6 +242,14 @@ button {
   text-align: center;
 }
 
+.product-card__discount {
+  color: #000;
+}
+.product-card__price {
+  color: #2E7D32;
+  font-size: 1.2rem;
+}
+
 .cart-card__price__suggest {
   font-size: 1rem;
   color: rgba(255, 0, 0, 0.694);

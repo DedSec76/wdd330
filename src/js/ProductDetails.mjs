@@ -31,14 +31,25 @@ export default class ProductDetails {
 
     renderProductDetails(product) {
         const clone = template.content.cloneNode(true)
-        const [brand, nameP, img, price, color, descri, btn] = clone.querySelectorAll("h3, h2, img, p, p, p, button")
+        const [brand, nameP, img, discount, price, color, descri, btn] = clone.querySelectorAll("h3, h2, img, p, p, p, p, button")
 
         brand.textContent = product.Brand.Name
         nameP.textContent = product.Name
         img.src = product.Image
         img.alt = product.Name
 
-        price.textContent = `$ ${product.ListPrice}`
+        if(product.SuggestedRetailPrice > product.FinalPrice) {
+            const suggest = document.createElement('span')
+            const dis = product.SuggestedRetailPrice - product.FinalPrice
+
+            suggest.classList.add("cart-card__price__suggest")
+            suggest.textContent = `$${product.SuggestedRetailPrice}`
+
+            discount.appendChild(suggest)
+
+            discount.append(` - $${Math.round(dis * 100) / 100}`)
+        }
+        price.textContent = `$${product.FinalPrice}`
         color.textContent = product.Colors[0].ColorName
         descri.innerHTML = `${product.DescriptionHtmlSimple}`
         btn.textContent = "Add to Cart"
