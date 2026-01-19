@@ -2,11 +2,11 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  root: "src",
-  publicDir: "public",
+  root: resolve(__dirname, "src"),
+  publicDir: resolve(__dirname, "src/public"),
 
   build: {
-    outDir: "../dist",
+    outDir: resolve(__dirname, "dist"),
     rollupOptions: {
       input: {
         main: resolve(__dirname, "src/index.html"),
