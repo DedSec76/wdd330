@@ -34,8 +34,8 @@ function cartItemTemplate(item, isDiscounted, discount) {
   <p class="cart-card__quantity">qty: 1</p>
 
   ${isDiscounted ? `<span class="discount-badge">-${discount}%</span>` : ""}
-
   ${isDiscounted ? `<p class="cart-card__price__suggest">$${item.SuggestedRetailPrice}</p>` : ""}
+  
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
 

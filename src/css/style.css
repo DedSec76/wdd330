@@ -256,6 +256,7 @@ button {
   text-decoration: line-through;
   grid-row: 2;
   grid-column: 3;
+  padding: .5rem;
 }
 
 .cart-card__price {
