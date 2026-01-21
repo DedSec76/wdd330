@@ -42,13 +42,14 @@ export default class ProductDetails {
             const suggest = document.createElement('span')
             const dis = product.SuggestedRetailPrice - product.FinalPrice
 
-            suggest.classList.add("cart-card__price__suggest")
+            suggest.classList.add("product-card__price__suggest")
             suggest.textContent = `$${product.SuggestedRetailPrice}`
 
             discount.appendChild(suggest)
 
             discount.append(` - $${Math.round(dis * 100) / 100}`)
         }
+
         price.textContent = `$${product.FinalPrice}`
         color.textContent = product.Colors[0].ColorName
         descri.innerHTML = `${product.DescriptionHtmlSimple}`

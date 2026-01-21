@@ -1,14 +1,17 @@
-import {renderListWithTemplate} from './utils.mjs'
+import { renderListWithTemplate } from './utils.mjs'
 
 // ProductList.mjs
-function productCardTemplate(product) {
+function productCardTemplate(product, isDiscounted, discount) {
     return `<li class="product-card">
                 <a href="product_pages/?product=${product.Id}">
                 <img src="${product.Image}"
                     alt="Image of ${product.Name}"/>
                 <h3 class="card__brand">${product.Brand.Name}</h3>
                 <h2 class="card__name">${product.Name}</h2>
-                <p class="cart-card__price__suggest">$${product.SuggestedRetailPrice}</p>
+
+                ${isDiscounted ? `<span class="discount-badge">-${discount}%</span>` : ""}
+                ${isDiscounted ? `<p class="product-card__price__suggest">$${product.SuggestedRetailPrice}</p>` : ""}
+                
                 <p class="product-card__price">$${product.ListPrice}</p>
                 </a>
             </li>`
@@ -29,8 +32,5 @@ export default class ProductList {
     
     renderList(list) {
         renderListWithTemplate(productCardTemplate, this.listElement, list);
-        /*
-        const htmlStrings = list.map(productCardTemplate)
-        this.listElement.insertAdjacentHTML('afterbegin', htmlStrings.join(''))*/
     }
 }
