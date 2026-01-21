@@ -240,14 +240,24 @@ button {
   grid-row: 1;
   grid-column: 1/2;
   text-align: center;
+  padding: .5rem;
 }
 
 .product-card__discount {
+  padding: .5rem 0;
   color: #000;
 }
 .product-card__price {
   color: #2E7D32;
   font-size: 1.2rem;
+  padding: .5rem;
+}
+
+.product-card__price__suggest {
+  font-size: 1rem;
+  color: rgba(255, 0, 0, 0.694);
+  text-decoration: line-through;
+  padding: .5rem;
 }
 
 .cart-card__price__suggest {
@@ -256,12 +266,14 @@ button {
   text-decoration: line-through;
   grid-row: 2;
   grid-column: 3;
-  padding: .5rem;
+  padding: .5rem 0;
 }
 
 .cart-card__price {
+  color: #2E7D32;
   grid-row: 3;
   grid-column: 3;
+  padding: 0;
 }
 
 @media screen and (min-width: 500px) {

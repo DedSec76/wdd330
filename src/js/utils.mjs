@@ -31,11 +31,19 @@ export function getParam(param) {
 }
 
 export function renderListWithTemplate(templateFn, parentElement, list, position='afterbegin', clear=false) {
-  const htmlStrings = list.map(templateFn)
+  const htmlStrings = list.map(item => {
+      const isDiscounted = item.FinalPrice < item.SuggestedRetailPrice
+      const porcentage = Math.round(((item.SuggestedRetailPrice - item.FinalPrice) / item.SuggestedRetailPrice) * 100)
+
+      const discount = isDiscounted ? porcentage : 0;
+
+    return templateFn(item, isDiscounted, discount)
+  })
 
   if (clear) {
     parentElement.innerHTML("");
   }
+  
   parentElement.insertAdjacentHTML(position, htmlStrings.join(''))
 }
 

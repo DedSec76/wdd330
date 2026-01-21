@@ -1,7 +1,7 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
 // ShoppingCart.mjs
-function renderTemplate (item) {
+function renderTemplate (item, isDiscounted, discount) {
     return `<li class="cart-card divider">
                 <a href="/product_pages/?product=${item.Id}" class="cart-card__image">
                     <img src="${item.Image}"
@@ -27,9 +27,14 @@ export default class ShoppingCart {
         this.listElement = listElement
     }
     init() {
-        
+        const cart = this.dataSource || [];
+        this.renderList(cart)
     }
-    renderList() {
-        renderListWithTemplate(renderTemplate, this.listElement, list)
+    renderList(cart) {
+        renderListWithTemplate(renderTemplate, this.listElement, cart)
+
+        if (cart.length == 0) {
+            document.querySelector(".product-list").innerHTML = `<p>The Cart is Empty</p>`
+        }
     }
 }
