@@ -4,7 +4,7 @@ import { renderListWithTemplate } from "./utils.mjs";
 function renderTemplate (item, isDiscounted, discount) {
     return `<li class="cart-card divider">
                 <a href="/product_pages/?product=${item.Id}" class="cart-card__image">
-                    <img src="${item.Image}"
+                    <img src="${item.Images.PrimaryMedium}"
                      alt="${item.Name}" />
                 </a>
                 <a href="/product_pages/?product=${item.Id}">
