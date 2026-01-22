@@ -35,7 +35,7 @@ export default class ProductDetails {
 
         brand.textContent = product.Brand.Name
         nameP.textContent = product.Name
-        img.src = product.Image
+        img.src = product.Images.PrimaryLarge
         img.alt = product.Name
 
         if(product.SuggestedRetailPrice > product.FinalPrice) {
