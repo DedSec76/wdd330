@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs"
+import { getLocalStorage, setLocalStorage, updateCartBadge } from "./utils.mjs"
 
 const section = document.querySelector(".product-detail")
 const template = document.querySelector(".tproduct-detail")
@@ -27,6 +27,8 @@ export default class ProductDetails {
         let cartItems = getLocalStorage("so-cart") || [];
         cartItems.push(this.product);
         setLocalStorage("so-cart", cartItems);
+
+        updateCartBadge()
     }
 
     renderProductDetails(product) {

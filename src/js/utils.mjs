@@ -70,4 +70,14 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(headerTemplate, headerElement)
   renderWithTemplate(footerTemplate, footerElement)
+
+  updateCartBadge()
+}
+
+export function updateCartBadge() {
+  const badge = qs(".quantity")
+  if(!badge) return
+
+  const cart = getLocalStorage("so-cart") || []
+  badge.textContent = cart.length
 }

@@ -31,10 +31,10 @@ export default class ShoppingCart {
         this.renderList(cart)
     }
     renderList(cart) {
-        renderListWithTemplate(renderTemplate, this.listElement, cart)
-
-        if (cart.length == 0) {
-            document.querySelector(".product-list").innerHTML = `<p>The Cart is Empty</p>`
+        if (cart.length === 0) {
+            this.listElement.innerHTML = `<p>The Cart is Empty</p>`
+            return
         }
+        renderListWithTemplate(renderTemplate, this.listElement, cart)        
     }
 }

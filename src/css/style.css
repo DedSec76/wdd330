@@ -128,6 +128,18 @@ button {
 /* End utility classes */
 
 /* Cart icon styles */
+.quantity {
+  font-size: 1rem;
+  font-weight: bold;
+  position: absolute;
+  right: -1px;
+  bottom: 2.2rem;
+  border-radius: 4rem;
+  padding: .1rem .3rem;
+  color: var(--dark-grey);
+  background-color: var(--primary-color);
+}
+
 .cart {
   padding-top: 1em;
   position: relative;
