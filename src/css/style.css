@@ -45,6 +45,34 @@ p {
   margin-bottom: 1rem;
 }
 
+/* Nav Bar*/
+.nav-bar {
+  background-color: var(--primary-color);
+  padding: 0.5rem;
+  text-align: center;
+}
+.nav-bar__form {
+  display: inline-block;
+}
+.nav-bar__form__input {
+  padding: 0.5rem;
+  font-size: var(--font-base);
+  border: none;
+  width: 300px;
+  max-width: 80vw;
+}
+.nav-bar__form__btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: var(--font-base);
+  border: none;
+  background-color: var(--secondary-color);
+  color: white;
+  cursor: pointer;
+}
+
+/* Icon Logo */
+
 .logo {
   line-height: 60px;
   width: 245px;
@@ -159,6 +187,8 @@ button {
 /* Products Category */
 .categories {
   display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
   gap: 1rem;
 }
 

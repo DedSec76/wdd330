@@ -19,17 +19,21 @@ function productCardTemplate(product, isDiscounted, discount) {
 
 export default class ProductList {
 
-    constructor (category, dataSource, listElement){
-        this.category = category
+    constructor (categoria, dataSource, listElement) {
+        this.categoria = categoria
         this.dataSource = dataSource
         this.listElement = listElement
     }
 
     async init() {
-        const list = await this.dataSource.getData(this.category);
-        this.renderList(list)
+        const list = await this.dataSource.getData(this.categoria);
+        document.querySelector(".title").textContent = this.categoria
 
-        document.querySelector(".title").textContent = this.category
+        if (!list || list.length === 0) {
+            this.listElement.innerHTML = "<p>No results were found</p>"
+            return;
+        }
+        this.renderList(list)
     }
     
     renderList(list) {
