@@ -1,4 +1,4 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate, calculateTotal } from "./utils.mjs";
 
 // ShoppingCart.mjs
 function renderTemplate (item, isDiscounted, discount) {
@@ -25,16 +25,31 @@ export default class ShoppingCart {
         this.category = category
         this.dataSource = dataSource
         this.listElement = listElement
+        this.divElement = document.querySelector(".cart-footer")
+        this.totalElement = document.querySelector(".cart-total")
     }
     init() {
         const cart = this.dataSource || [];
         this.renderList(cart)
     }
+
+    renderTotal(total) {
+        this.totalElement.textContent = `Total: $${total.toFixed(2)}`
+    }
+
     renderList(cart) {
         if (cart.length === 0) {
             this.listElement.innerHTML = `<p>The Cart is Empty</p>`
+            this.renderTotal(0)
             return
-        }
-        renderListWithTemplate(renderTemplate, this.listElement, cart)        
+        } 
+
+        const total = calculateTotal(cart)
+        this.renderTotal(total)
+        this.divElement.classList.toggle("hide")
+        this.divElement.classList.toggle("show")
+
+        renderListWithTemplate(renderTemplate, this.listElement, cart) 
+        
     }
 }

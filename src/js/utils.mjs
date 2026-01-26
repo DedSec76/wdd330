@@ -81,3 +81,7 @@ export function updateCartBadge() {
   const cart = getLocalStorage("so-cart") || []
   badge.textContent = cart.length
 }
+
+export function calculateTotal(cart) {
+  return cart.reduce((sum, item) => sum + item.FinalPrice, 0)
+}

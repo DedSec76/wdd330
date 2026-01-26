@@ -361,6 +361,23 @@ button {
   }
 }
 
+/* Start Cart Footer */
+.cart-footer {
+  
+  
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+
+
+
+/* End Cart Footer */
+
 footer {
   font-size: var(--small-font);
   padding: 1em;
