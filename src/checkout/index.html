@@ -18,7 +18,57 @@
 
     <main class="divider">
       <section class="products">
-        <h2>Review & Place your Order</h2>
+        <h2 class="text-center">Review & Place your Order</h2>
+
+        <div class="divider checkout">
+          <form class="checkout__form">
+            <fieldset>
+              <legend>Customer Name</legend>
+
+              <label>First Name: 
+                <input type="text" minlength="2" required>
+              </label>
+              <label>Last Name: 
+                <input type="text" minlength="2" required>
+              </label>
+            </fieldset>
+            <fieldset>
+              <legend>Address</legend>
+              <label>Street Address: 
+                <input type="text" minlength="5" required>
+              </label>
+              <label>City: 
+                <input type="text" minlength="5" required>
+              </label>
+              <label>State: 
+                <input type="text" required>
+              </label>
+              <label>Zip Code: 
+                <input type="text" minlength="5" maxlength="5" inputmode="numeric" required>
+              </label>
+            </fieldset>
+            <fieldset>
+              <legend>Payment</legend>
+              <label>Credit Card Number: 
+                <input type="text" placeholder="ej. xxxx-xxxx-xxxx-xxxx" minlength="13" maxlength="19" required>
+              </label>
+              <label>Expiration Date: 
+                <input type="month" required>
+              </label>
+              <label>Security Code: 
+                <input type="text" minlength="3" maxlength="4" inputmode="numeric" required>
+              </label>
+            </fieldset>
+            <button type="submit">Pay Now!</button>
+          </form>
+          <div class="checkout__summary">
+            <ul class="checkout__summary__items list_item">
+
+            </ul>
+            <div class="checkout__summary__total summary"></div>
+          </div>
+        </div>
+        
       </section>
     </main>
 

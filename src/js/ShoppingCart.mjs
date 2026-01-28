@@ -1,4 +1,4 @@
-import { renderListWithTemplate, calculateTotal } from "./utils.mjs";
+import { renderListWithTemplate, calculateTotal, setLocalStorage } from "./utils.mjs";
 
 // ShoppingCart.mjs
 function renderTemplate (item, isDiscounted, discount) {
@@ -21,22 +21,22 @@ function renderTemplate (item, isDiscounted, discount) {
 }
 
 export default class ShoppingCart {
-    constructor(category, dataSource, listElement) {
-        this.category = category
+    constructor(dataSource, listElement) {
         this.dataSource = dataSource
         this.listElement = listElement
         this.divElement = document.querySelector(".cart-footer")
         this.totalElement = document.querySelector(".cart-total")
+        this.formCheckout = document.querySelector("#checkout")
     }
     init() {
         const cart = this.dataSource || [];
         this.renderList(cart)
+        
     }
 
     renderTotal(total) {
         this.totalElement.textContent = `Total: $${total.toFixed(2)}`
     }
-
     renderList(cart) {
         if (cart.length === 0) {
             this.listElement.innerHTML = `<p>The Cart is Empty</p>`
@@ -49,7 +49,18 @@ export default class ShoppingCart {
         this.divElement.classList.toggle("hide")
         this.divElement.classList.toggle("show")
 
-        renderListWithTemplate(renderTemplate, this.listElement, cart) 
-        
+        renderListWithTemplate(renderTemplate, this.listElement, cart)
+        this.actionPay(cart, total)
+    }
+    actionPay(cart, total) {
+        this.formCheckout.addEventListener("submit", e => {
+            e.preventDefault()
+
+            const params = new URLSearchParams({
+                cart: JSON.stringify(cart)
+            })
+            const so_cart = params.toString()
+            location.href = `/checkout/?${so_cart}&total=${total}`
+        })
     }
 }
