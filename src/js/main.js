@@ -5,6 +5,8 @@ loadHeaderFooter()
 const navForm = document.querySelector(".nav-bar__form");
 const inputForm = document.querySelector(".nav-bar__form__input")
 
+if(navForm && inputForm) {
+
 navForm.addEventListener("submit", e => {
     e.preventDefault()
 
@@ -16,3 +18,5 @@ navForm.addEventListener("submit", e => {
     }
     window.location.href = `/product_listing/?category=${encodeURIComponent(text)}`
 })
+
+}

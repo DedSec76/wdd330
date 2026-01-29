@@ -18,21 +18,20 @@
 
     <main class="divider">
       <section class="products">
+        
         <h2 class="text-center">Review & Place your Order</h2>
-
         <div class="divider checkout">
           <form name="checkout" class="checkout__form">
             <input type="hidden" name="orderDate" id="orderDate">
-
             <div>
               <fieldset>
                 <legend>Customer Name</legend>
 
                 <label>First Name: 
-                  <input type="text" name="fname" minlength="2" required>
+                  <input type="text" name="fname" minlength="2" required pattern="[A-Za-z ]+">
                 </label>
                 <label>Last Name: 
-                  <input type="text" name="lname" minlength="2" required>
+                  <input type="text" name="lname" minlength="2" required pattern="[A-Za-z ]+">
                 </label>
               </fieldset>
               <fieldset>
@@ -53,10 +52,10 @@
               <fieldset>
                 <legend>Payment</legend>
                 <label>Credit Card Number: 
-                  <input type="text" name="cardNumber" placeholder="ej. xxxx-xxxx-xxxx-xxxx" minlength="13" maxlength="19" required>
+                  <input type="text" name="cardNumber" placeholder="ej. xxxx-xxxx-xxxx-xxxx" minlength="13" maxlength="19" inputmode="numeric" value="1234123412341234" required>
                 </label>
                 <label>Expiration Date: 
-                  <input type="text" name="expiration" id="expiration" required>
+                  <input type="text" name="expiration" id="expiration" value="12/26" required>
                 </label>
                 <label>Security Code: 
                   <input type="text" name="code" minlength="3" maxlength="4" inputmode="numeric" required>
