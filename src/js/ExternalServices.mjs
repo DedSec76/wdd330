@@ -1,4 +1,3 @@
-
 const baseURL = import.meta.env.VITE_SERVER_URL
 
 function convertToJson(res) {
@@ -9,7 +8,7 @@ function convertToJson(res) {
   }
 }
 
-export default class ProductData {
+export default class ExternalServices {
   constructor() {
     //this.category = category;
     //this.path = `/json/${this.category}.json`;
@@ -24,9 +23,14 @@ export default class ProductData {
     const data = await convertToJson(response)
     return data.Result;
   }
-  async searchProducts(text) {
-    const responde = await fetch(`${baseURL}products/search/${encodeURIComponent(text)}`)
-    const data = await convertToJson(responde)
-    return data.Result
+  async checkout(payload) {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    };
+    return await fetch(`${baseURL}checkout/`, options).then(convertToJson)
   }
 }

@@ -375,18 +375,17 @@ button {
 
 /* Checkout Page Start */
 .divider.checkout {
-  display: grid;
-  gap: 1.5rem;
-  padding: .5rem 0;
-
-  @media screen and (min-width: 760px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-    padding: .5rem;
-  }
+  
 
   .checkout__form {
+    display: grid;
+    grid-template-columns: 1fr;
     margin: .5rem 0;
+
+    @media screen and (min-width: 760px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
 
     fieldset {
       border: none;
@@ -438,16 +437,24 @@ button {
     padding: 1rem;
 
     .checkout__summary__items {
-      list-style: none;
       margin: .3rem 0;
     }
 
-    .summary {
+    .order__summary {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.8rem 1rem;
+      align-items: center;
       font-weight: bold;
       font-size: 1.2rem;
       border-top: 2px solid var(--primary-color);
       padding-top: .5rem;
       margin-top: 1rem;
+
+      #orderTotal {
+        padding: .5rem 0;
+        border-top: 2px solid var(--primary-color);
+      }
     }
   }
 }

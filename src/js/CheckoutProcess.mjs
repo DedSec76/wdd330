@@ -1,6 +1,21 @@
-import { getLocalStorage, getParam } from "./utils.mjs"
+import ExternalServices from "./ExternalServices.mjs"
+import { getLocalStorage, getParam, formDataToJSON } from "./utils.mjs"
+
+const services = new ExternalServices()
 
 const subtotal_price = getParam("total")
+
+function packageItems(items) {
+    const cartItems = items.map(item => {
+        let id = item.Id
+        let name = item.Name
+        let price = item.FinalPrice
+        let quantity = 1
+
+        return {id, name, price, quantity}
+    })
+    return cartItems
+}
 
 export default class CheckoutProcess {
     constructor(key, outputSelector) {
@@ -14,34 +29,19 @@ export default class CheckoutProcess {
     }
     init() {
         this.list = getLocalStorage(this.key) || []
-
-        this.showSummary()
-    }
-    showSummary() {
-        const form = document.querySelector(".checkout__form")
-
-        form.addEventListener("submit", e => { 
-            e.preventDefault()
-            if (!form.checkValidity()) {
-                form.reportValidity()
-            }
-        })
-        form.addEventListener("input", e => {
-            if (!e.target.matches("input")) return
-
-            if (form.checkValidity()) {
-                this.calculateSubtotal()
-            }  
-        })
+        this.calculateSubtotal()
     }
 
     calculateSubtotal() {
-        this.outputSelector.innerHTML = `
-                                        <p>Subtotal: $${this.itemTotal.toFixed(2)}</p>
-                                        <p>Number of Items: ${this.list.length}</p>
-                                                
-                                        `
-        this.calculateTotal()          
+        // calculate and display the total amount of the items in the cart, and the number of items.
+        const summaryElement = document.querySelector(
+            this.outputSelector + " #cartTotal");
+        
+        const itemNumElement = document.querySelector(
+            this.outputSelector + " #num-items");
+
+        itemNumElement.innerText = this.list.length;
+        summaryElement.innerText = `$${this.itemTotal}`
     }
     calculateTotal() {
         // Calculate tax
@@ -49,13 +49,7 @@ export default class CheckoutProcess {
 
         // Calculate shipping
         // For first item $10, each additional item $2
-        for (let i = 0; i < this.list.length; i++) {
-            if(this.list[i] == this.list[0]) {
-                this.shipping += 10
-            } else {
-                this.shipping += 2
-            }
-        }
+        this.shipping = 10 + (this.list.length - 1) * 2
         
         // Calculate order total
         this.orderTotal =  this.itemTotal + this.tax + this.shipping
@@ -63,12 +57,33 @@ export default class CheckoutProcess {
         // display thge totals.
         this.displayOrderTotals()
     }
+
     displayOrderTotals() {
+        const tax = document.querySelector(`${this.outputSelector} #tax`);
+        const shipping = document.querySelector(`${this.outputSelector} #shipping`);
+        const orderTotal = document.querySelector(`${this.outputSelector} #orderTotal`);
+
+        tax.innerText = `$${this.tax.toFixed(2)}`;
+        shipping.innerText = `$${this.shipping.toFixed(2)}`;
+        orderTotal.innerText = `$${this.orderTotal.toFixed(2)}`;
+    }
+
+    async checkout() {
+        const formElement = document.forms["checkout"]
+        const json = formDataToJSON(formElement)
         
-        this.outputSelector.innerHTML += `
-                                        <p>Tax: $${this.tax.toFixed(2)}</p>
-                                        <p>Shipping Amounts: $${this.shipping.toFixed(2)}</p>
-                                        <p>Total to Pay: $${this.orderTotal.toFixed(2)}</p>
-                                        `
+        json.orderDate = new Date().toISOString()
+        json.items = packageItems(this.list)
+        json.orderTotal = this.orderTotal.toFixed(2)
+        json.shipping = this.shipping
+        json.tax = this.tax.toFixed(2)
+        
+        try {
+            const responde = await services.checkout(json)
+            console.log(responde)
+        } catch (err) {
+            console.log(err)
+        }
     }
 }
+

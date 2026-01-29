@@ -85,3 +85,14 @@ export function updateCartBadge() {
 export function calculateTotal(cart) {
   return cart.reduce((sum, item) => sum + item.FinalPrice, 0)
 }
+
+export function formDataToJSON(formElement) {
+  const formData = new FormData(formElement),
+    convertedJSON = {};
+
+  formData.forEach(function (value, key) {
+    convertedJSON[key] = value;
+  });
+
+  return convertedJSON;
+}
