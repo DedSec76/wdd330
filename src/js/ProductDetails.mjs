@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage, updateCartBadge } from "./utils.mjs"
+import { getLocalStorage, setLocalStorage, updateCartBadge, alertMessage } from "./utils.mjs"
 
 const section = document.querySelector(".product-detail")
 const template = document.querySelector(".tproduct-detail")
@@ -18,6 +18,7 @@ export default class ProductDetails {
         document.addEventListener("click", e => {
             if (e.target.classList.contains("addToCart")){
                 this.addProductToCart(this)
+                alertMessage("Product was Added Successfully!!")
             }
         })
        

@@ -1,5 +1,5 @@
 import ExternalServices from "./ExternalServices.mjs"
-import { getLocalStorage, getParam, formDataToJSON } from "./utils.mjs"
+import { getLocalStorage, getParam, formDataToJSON, setLocalStorage, alertMessage, removeAllAlerts } from "./utils.mjs"
 
 const services = new ExternalServices()
 
@@ -81,8 +81,15 @@ export default class CheckoutProcess {
         try {
             const responde = await services.checkout(json)
             console.log(responde)
+            setLocalStorage("so-cart", [])
+            location.assign("/checkout/success.html")
+            
         } catch (err) {
-            console.log(err)
+            removeAllAlerts()
+            for(const [key, value] of Object.entries(err.message)) {
+                let alert = (key, value)
+                alertMessage(alert, "fail")
+            }
         }
     }
 }
