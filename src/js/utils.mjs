@@ -23,7 +23,7 @@ export function setClick(selector, callback) {
 }
 
 export function getParam(param) {
-  const queryString = window.location.search
+  const queryString = location.search
   const urlParams = new URLSearchParams(queryString)
   const product = urlParams.get(param)
 
@@ -80,4 +80,19 @@ export function updateCartBadge() {
 
   const cart = getLocalStorage("so-cart") || []
   badge.textContent = cart.length
+}
+
+export function calculateTotal(cart) {
+  return cart.reduce((sum, item) => sum + item.FinalPrice, 0)
+}
+
+export function formDataToJSON(formElement) {
+  const formData = new FormData(formElement),
+    convertedJSON = {};
+
+  formData.forEach(function (value, key) {
+    convertedJSON[key] = value;
+  });
+
+  return convertedJSON;
 }
