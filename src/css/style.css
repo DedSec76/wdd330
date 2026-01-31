@@ -157,10 +157,10 @@ button {
   margin: auto;
   border: 1px solid rgb(119, 119, 119);
   box-shadow: 2px 1px 12px black;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 
   &::backdrop {
-    background: rgba(0,0,0,.35)
+    background: rgba(0, 0, 0, 0.35);
   }
   img {
     display: flex;
@@ -169,26 +169,24 @@ button {
 }
 
 .modal__content {
-    opacity: 0;
-    transform: translateY(12px) scale(.98);
-    transition: 
-    opacity .1s cubic-bezier(.22,1,.36,1),
-    transform .1s cubic-bezier(.22,1,.36,1);
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  transition:
+    opacity 0.1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .modal:popover-open .modal__content {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
-
-
 
 .quickview {
   background: none;
   border: 1px solid rgb(166, 166, 166);
   border-radius: 1rem;
-  padding: .1rem;
-  margin: .1rem .2rem;
-  transition: all .5s ease-in-out;
+  padding: 0.1rem;
+  margin: 0.1rem 0.2rem;
+  transition: all 0.5s ease-in-out;
 
   &:hover {
     background-color: rgb(55, 55, 55);
@@ -209,7 +207,7 @@ button {
   right: -1px;
   bottom: 2.2rem;
   border-radius: 4rem;
-  padding: .1rem .3rem;
+  padding: 0.1rem 0.3rem;
   color: var(--dark-grey);
   background-color: var(--primary-color);
 }
@@ -355,24 +353,24 @@ button {
   grid-row: 1;
   grid-column: 1/2;
   text-align: center;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .product-card__discount {
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   color: #000;
 }
 .product-card__price {
-  color: #2E7D32;
+  color: #2e7d32;
   font-size: 1.2rem;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .product-card__price__suggest {
   font-size: 1rem;
   color: rgba(255, 0, 0, 0.694);
   text-decoration: line-through;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .cart-card__price__suggest {
@@ -381,11 +379,11 @@ button {
   text-decoration: line-through;
   grid-row: 2;
   grid-column: 3;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 }
 
 .cart-card__price {
-  color: #2E7D32;
+  color: #2e7d32;
   grid-row: 3;
   grid-column: 3;
   padding: 0;
@@ -409,8 +407,6 @@ button {
 
 /* Start Cart Footer */
 .cart-footer {
-  
-  
 }
 .hide {
   display: none;
@@ -421,12 +417,10 @@ button {
 
 /* Checkout Page Start */
 .divider.checkout {
-  
-
   .checkout__form {
     display: grid;
     grid-template-columns: 1fr;
-    margin: .5rem 0;
+    margin: 0.5rem 0;
 
     @media screen and (min-width: 760px) {
       grid-template-columns: repeat(2, 1fr);
@@ -441,8 +435,8 @@ button {
         border: none;
         color: var(--dark-grey);
         font-weight: bold;
-        margin: .6rem 0;
-        margin-left: .5rem;
+        margin: 0.6rem 0;
+        margin-left: 0.5rem;
       }
 
       label {
@@ -453,8 +447,8 @@ button {
       input {
         width: 100%;
         display: block;
-        margin: .3rem 0;
-        padding: .3rem;
+        margin: 0.3rem 0;
+        padding: 0.3rem;
         border: none;
         border-bottom: 1px solid rgb(110, 110, 110);
         font-size: var(--large-font);
@@ -473,7 +467,6 @@ button {
           border-radius: 4px;
         }
       }
-      
     }
   }
 
@@ -483,7 +476,7 @@ button {
     padding: 1rem;
 
     .checkout__summary__items {
-      margin: .3rem 0;
+      margin: 0.3rem 0;
     }
 
     .order__summary {
@@ -494,20 +487,20 @@ button {
       font-weight: bold;
       font-size: 1.2rem;
       border-top: 2px solid var(--primary-color);
-      padding-top: .5rem;
+      padding-top: 0.5rem;
       margin-top: 1rem;
 
       #orderTotal {
-        padding: .5rem 0;
+        padding: 0.5rem 0;
         border-top: 2px solid var(--primary-color);
       }
     }
   }
 }
 .alert {
-  background-color: #4BB543;
+  background-color: #4bb543;
   color: white;
-  padding: .2rem .7rem;
+  padding: 0.2rem 0.7rem;
   position: fixed;
   top: 1rem;
   left: 50%;
@@ -521,20 +514,20 @@ button {
 
   p {
     padding: 0;
-    margin: .5rem 0;
+    margin: 0.5rem 0;
     cursor: pointer;
     font-size: 1.2rem;
   }
   p:last-child {
     color: red;
-    padding: .2rem;
-    margin: .5rem 0;
+    padding: 0.2rem;
+    margin: 0.5rem 0;
     background-color: rgb(230, 230, 230);
     box-shadow: 0 0 12px black;
   }
 }
 .alert.fail {
-    background-color: red;
+  background-color: red;
 }
 
 /* Checkout Page End */
