@@ -1,8 +1,9 @@
-import { renderListWithTemplate } from './utils.mjs'
+import { renderListWithTemplate, renderWithTemplate } from './utils.mjs'
 
 // ProductList.mjs
 function productCardTemplate(product, isDiscounted, discount) {
     return `<li class="product-card">
+                <button class="quickview">👁️</button>
                 <a href="/product_pages/?product=${product.Id}">
                 <img src="${product.Images.PrimaryMedium}"
                     alt="Image of ${product.Name}"/>
@@ -34,9 +35,34 @@ export default class ProductList {
             return;
         }
         this.renderList(list)
+        this.renderModal(list)
     }
     
     renderList(list) {
         renderListWithTemplate(productCardTemplate, this.listElement, list);
+    }
+    renderModal(list) {
+        const modal = document.querySelector(".modal")
+        const quickview = document.querySelectorAll(".quickview")
+
+        quickview.forEach((btn, i) => {
+            btn.addEventListener("click", async () => {
+                const product = await this.dataSource.findProductById(list[i].Id);
+                
+                modal.innerHTML= `<div class="modal__content">
+                                    <h2>${product.Name}</h2>
+                                    <img src=${product.Images.PrimaryLarge}
+                                    alt="Image of ${product.Name}" />
+                                    <p class="product-card__price">$${product.FinalPrice}</p>
+                                    <p>${product.Colors[0].ColorName}</p>
+                                    <p>${product.DescriptionHtmlSimple}</p>
+                                    <button 
+                                    popovertarget="details"
+                                    popovertargetaction="toggle">Close</button>
+                                 </div>
+                                `
+                modal.showPopover()
+            })
+        });
     }
 }
