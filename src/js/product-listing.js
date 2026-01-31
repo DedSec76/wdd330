@@ -10,5 +10,4 @@ const productListElement = document.querySelector(".product-list")
 const category = getParam("category")
 
 const list = new ProductList(category, dataSource, productListElement)
-
 list.init()
