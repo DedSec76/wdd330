@@ -13,58 +13,106 @@
   </head>
 
   <body>
-    <header id="main-header" class="divider">
-    </header>
+    <header id="main-header" class="divider"></header>
 
     <main class="divider">
       <section class="products">
-        
         <h2 class="text-center">Review & Place your Order</h2>
         <div class="divider checkout">
           <form name="checkout" class="checkout__form">
-            <input type="hidden" name="orderDate" id="orderDate">
+            <input type="hidden" name="orderDate" id="orderDate" />
             <div>
               <fieldset>
                 <legend>Customer Name</legend>
 
-                <label>First Name: 
-                  <input type="text" name="fname" minlength="2" required pattern="[A-Za-z ]+">
+                <label
+                  >First Name:
+                  <input
+                    type="text"
+                    name="fname"
+                    minlength="2"
+                    required
+                    pattern="[A-Za-z ]+"
+                  />
                 </label>
-                <label>Last Name: 
-                  <input type="text" name="lname" minlength="2" required pattern="[A-Za-z ]+">
+                <label
+                  >Last Name:
+                  <input
+                    type="text"
+                    name="lname"
+                    minlength="2"
+                    required
+                    pattern="[A-Za-z ]+"
+                  />
                 </label>
               </fieldset>
               <fieldset>
                 <legend>Address</legend>
-                <label>Street Address: 
-                  <input type="text" name="street" minlength="5" required>
+                <label
+                  >Street Address:
+                  <input type="text" name="street" minlength="5" required />
                 </label>
-                <label>City: 
-                  <input type="text" name="city" minlength="5" required>
+                <label
+                  >City:
+                  <input type="text" name="city" minlength="5" required />
                 </label>
-                <label>State: 
-                  <input type="text" name="state" required>
+                <label
+                  >State:
+                  <input type="text" name="state" required />
                 </label>
-                <label>Zip Code: 
-                  <input type="text" id="zip" name="zip" minlength="5" maxlength="5" inputmode="numeric" required>
+                <label
+                  >Zip Code:
+                  <input
+                    type="text"
+                    id="zip"
+                    name="zip"
+                    minlength="5"
+                    maxlength="5"
+                    inputmode="numeric"
+                    required
+                  />
                 </label>
               </fieldset>
               <fieldset>
                 <legend>Payment</legend>
-                <label>Credit Card Number: 
-                  <input type="text" name="cardNumber" placeholder="ej. xxxx-xxxx-xxxx-xxxx" minlength="13" maxlength="19" inputmode="numeric" value="1234123412341234" required>
+                <label
+                  >Credit Card Number:
+                  <input
+                    type="text"
+                    name="cardNumber"
+                    placeholder="ej. xxxx-xxxx-xxxx-xxxx"
+                    minlength="13"
+                    maxlength="19"
+                    inputmode="numeric"
+                    value="1234123412341234"
+                    required
+                  />
                 </label>
-                <label>Expiration Date: 
-                  <input type="text" name="expiration" id="expiration" value="12/26" required>
+                <label
+                  >Expiration Date:
+                  <input
+                    type="text"
+                    name="expiration"
+                    id="expiration"
+                    value="12/26"
+                    required
+                  />
                 </label>
-                <label>Security Code: 
-                  <input type="text" name="code" minlength="3" maxlength="4" inputmode="numeric" required>
+                <label
+                  >Security Code:
+                  <input
+                    type="text"
+                    name="code"
+                    minlength="3"
+                    maxlength="4"
+                    inputmode="numeric"
+                    required
+                  />
                 </label>
               </fieldset>
             </div>
             <div class="checkout__summary">
-              <div class="checkout__summary__items list_item">
-              </div>
+              <div class="checkout__summary__items list_item"></div>
               <div class="order__summary">
                 <div>Items</div>
                 <div id="num-items"></div>
@@ -81,7 +129,6 @@
             <button type="submit" id="checkoutSubmit">Pay Now!</button>
           </form>
         </div>
-        
       </section>
     </main>
 
